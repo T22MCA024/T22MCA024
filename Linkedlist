@@ -1,0 +1,136 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+};
+void print(struct node*);
+struct node*create(struct node*);
+struct node* copy(struct node *);
+struct node*revers_copy(struct node*);
+struct node*concatenate(struct node*,struct node *);
+struct node*splite(struct node*);
+int main()
+{
+	struct node *l=NULL,*l1=NULL,*r1=NULL,*l4,*l2=NULL,*l3=NULL,*l5=NULL,*l6;
+	l=create(l);
+	print(l);
+	l1=copy(l);
+	print(l1);
+	r1=revers_copy(l);
+	print(r1);
+	l2=create(l2);
+	print(l2);
+	l3=create(l3);
+	l4=concatenate(l2,l3);
+	print(l4);
+	splite(l);
+	print(l6);
+ }
+ struct node*create(struct node*l)
+ {
+ 	struct node*p,*last;
+ 	int n,i,ele;
+ 	printf("enter no of nodes");
+ 	scanf("%d",&n);
+ 	for(i=0;i<n;i++)
+ 	{
+ 		printf("enter elements");
+ 		scanf("%d",&ele);
+ 		p=(struct node*)malloc(sizeof(struct node));
+ 		p->data=ele;
+ 		p->next=NULL;
+ 		if(l==NULL)
+ 		{
+ 			l=p;
+ 			last=p;
+ 		}
+ 		else
+ 		{
+ 			last->next=p;
+ 			last=p;
+ 			}
+ 		}
+ 		return l;
+ 	}
+ 	void print(struct node*l)
+ 	{
+ 		while(l!=NULL)
+ 		{
+ 			printf("element=%d\n",l->data);
+ 			l=l->next;
+ 		}
+ 	}
+ 	struct node* copy(struct node*l)
+ 	{
+ 		int ele;
+ 		struct node *p,*last,*l1=NULL;
+ 		while(l!=NULL)
+ 		{
+ 			ele=l->data;
+ 			p=(struct node*)malloc(sizeof(struct node));
+ 			p->data=ele;
+ 			p->next=NULL;
+ 			if(l1==NULL)
+ 			{
+ 				l1=p;
+ 				last=p;
+ 			}
+ 			else
+ 			{
+ 				last->next=p;
+ 				last=p;
+ 			}
+ 			l=l->next;
+ 		}
+ 		return l1;
+ 	}
+struct node* revers_copy(struct node*l)
+ 	{
+ 		int ele;
+ 		struct node *p,*r1=NULL;
+ 		while(l!=NULL)
+ 		{
+ 		ele=l->data;
+ 			p=(struct node*)malloc(sizeof(struct node));
+ 			p->data=ele;
+ 			p->next=NULL;
+ 			if(r1==NULL)
+ 			r1=p;
+ 			else
+ 			{
+ 				p->next=r1;
+ 				r1=p;
+ 			}
+ 			l=l->next;
+ 		}
+ 		return r1;
+ 	}
+ 	struct node*concatenate(struct node *l2,struct node *l3)
+ 	{
+ 		struct node *l4=NULL,*q;
+ 		q=l2;
+ 		while(q->next!=NULL)
+ 		q=q->next;
+ 		q->next=l3;
+ 		return l2;
+ 	}
+   struct node* splite(struct node*l)
+ 	{
+ 		int val;
+ 		struct node*p,*q,*l6=NULL;
+ 		printf("enter value");
+ 		scanf("%d",&val);
+ 		q=l ;
+ 		while(q->data!=val)
+ 		{
+ 			p=q;
+ 			q=q->next;
+ 		}
+ 		p->next=NULL;
+ 		l6=q;
+ 		return l6;
+ 	}
+ 		
