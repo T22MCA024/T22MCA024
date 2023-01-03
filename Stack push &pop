@@ -1,0 +1,63 @@
+
+#include<stdio.h>
+#define size 5
+struct stack
+{
+	int a[5];
+	int top;
+};
+struct stack push(struct stack,int);
+struct stack pop(struct stack*);
+void print(struct stack);
+int main()
+{
+	int ele;
+	struct stack s;
+	s.top=-1;
+	s=push (s,ele);
+	print(s);
+	s=pop(&s);
+	print(s);
+}
+	struct stack push(struct stack s,int ele)
+	{
+		int i;
+		for(i=0;i<size;i++)
+		{ 
+			printf("enter an eliment");
+			scanf("%d",&ele);
+		if(s.top<(size-1))
+		{
+			s.top++;
+			s.a[s.top]=ele;
+		}
+		else
+		{
+			printf("over flow");
+			
+		}
+	   }
+		return s;
+	  }
+    struct stack pop(struct stack*s)
+    {
+    	int top,ele;
+    	if(top==-1)
+    	{
+    		printf("under flow ");
+    	}
+    	else
+    	{
+    		ele=s->a[s->top];
+    		s->top--;
+    		return s;
+    	}
+    }
+    void print(struct stack s)
+    {
+    	int i;
+    	for(i=s.top;i>=0;i--)
+    	printf("%d\n",s.a[i]);
+    }
+    
+  
