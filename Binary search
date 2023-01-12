@@ -1,0 +1,56 @@
+BINARY SEARCH 
+
+#include<stdio.h>
+int main()
+{
+int ele,a[10],i,j,n,mid,lb,ub,m;
+printf("Enter n value:\n");
+scanf("%d",&n);
+lb=0;
+ub=n-1;
+printf("Enter array elements:\n");
+for(i=0;i<n;i++)
+{
+scanf("%d",&a[i]);
+}
+for(j=0;j<n;j++)
+{
+    for(i=0;i<n-1;i++)
+    {
+        if(a[i]>a[i+1])
+        {
+            m=a[i];
+            a[i]=a[i+1];
+            a[i+1]=m;
+        }
+    }
+}
+printf("sorted array elements are:\n");
+for(i=0;i<n;i++)
+{
+printf("a[%d]=%d\n",i,a[i]);
+}
+printf("Enter an element:\n");
+scanf("%d",&ele);
+printf("Now search for an element i.e., %d in which position:\n",ele);
+mid=(lb+ub)/2;
+while(lb<=ub)
+{
+mid=(lb+ub)/2;
+if(a[mid]==ele)
+{
+printf("%d element is at position %d",ele,mid+1);
+break;
+}
+else if(a[mid]<ele)
+{
+lb=mid+1;
+}
+else
+{
+ub=mid-1;
+}
+mid=(lb+ub)/2;
+}
+return 0;
+}
