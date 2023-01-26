@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<ctype.h>
+#define size 5
+struct stack
+{
+	int a[20];
+	int top;
+ };
+ struct stack push(struct stack,char);
+ char pop(struct stack*);
+ int evaluate(int,int,char);
+ int main()
+ {
+ 	struct stack s;
+ 	char post[20],i=0,c;
+ 	int op2,op1,res;
+ 	printf("enter postfix string\n:");
+ 	scanf("%s",post);
+ 	while(post[i]!='\0')
+ 	{
+ 		if(isdigit(post[i]))
+ 		{
+ 			s=push(s,post[i]-'0');
+ 		}
+ 		else
+ 		{
+ 			op2=pop(&s);
+ 			op1=pop(&s);
+ 			res=evaluate(op1,op2,post[i]);
+ 			s=push(s,res);
+ 		}
+ 		i++;
+ 	}
+ 	res=pop(&s);
+ 	printf("result=%d",res);
+ }
+ struct stack push(struct stack s,char c)
+ {
+ 	if(s.top<(size-1))
+ 	{ 
+ 		s.top++;
+ 		s.a[s.top]=c;
+ 	}
+ 	return s;
+ }
+ char pop(struct stack *s)
+ {
+ 	char ele;
+ 	if(s->top==-1)
+ 	{
+ 		printf("under flow\n");
+ 	}
+ 	else
+ 	{
+ 		ele=s->a[s->top];
+ 		     s->top--;
+ 	}
+ 	return ele;
+ }
+ int evaluate(int op1,int op2,char c)
+ {
+ 	switch(c)
+ 	{
+ 		case'+':return(op1+op2);
+ 		case'-':return(op1-op2);
+ 		case'*':return(op1*op2);
+ 		case'/':return(op1/op2);
+ 	}
+ }
+ 		
