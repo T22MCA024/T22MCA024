@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define size 20
+struct quene
+{
+	int a[20];
+	int r,f;
+};
+struct quene insert_rear(struct quene,int);
+int del_front(struct quene *);
+void print(struct quene);
+int main()
+{
+	struct quene q;
+	int ele,ch;
+	q.r=0;
+	q.f=0;
+	do
+	{
+	printf("1.insertion\n 2.deletion\n 3.display\n 4.exit\n");
+	scanf("%d",&ch);
+	switch(ch)
+	{
+		case 1:q=insert_rear(q,ele);
+		        break;
+		case 2:ele=del_front(&q);
+		         break;
+		case 3:print(q);
+		        break;
+		case 4:exit(0);
+		        break;
+		default:printf(" enter correct choice");
+		         break;
+	}
+	printf("\n");
+  } 
+  while(ch<5);
+}
+struct quene insert_rear(struct quene q,int ele)
+{
+	printf("enter value");
+	scanf("%d",&ele);
+	if((q.r+1)%size==q.f)
+	{
+		printf("quene is full");
+	}
+	else
+	{
+		q.r=(q.r+1)%size;
+		q.a[q.r]=ele;
+	}
+	return q;
+}
+int del_front(struct quene *q)
+{
+	int ele;
+	if(q->r==q->f)
+	{
+		printf("quene is empty");
+	}
+	else
+	{
+		q->f=(q->f+1)%size;
+		ele=q->a[q->f];
+		printf("removed element=%d",ele);
+	}
+	return ele;
+}
+void print(struct quene q)
+{
+	int i;
+	if(q.r==q.f)
+	{
+		printf("quene is empty");
+	}
+	else
+	{
+		for(i=(q.f+1)%size;i!=(q.r+1)%size;i=(i+1)%size)
+		{
+			printf("a[%d]=%d\n",i,q.a[i]);
+		}
+	}
+}
+
+	
+
