@@ -1,0 +1,107 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{ 
+	int data;
+	struct node *left,*right;
+};
+struct node *create_bst(struct node *);
+void pre_order(struct node*);
+void post_order(struct node*);
+void in_order(struct node*);
+int main()
+{
+	struct node *t=NULL;
+	int ch;
+    	printf("1.creation\n2.pre_order\n 3.post_order\n 4.in_order\n");
+	do
+	{
+		printf("choice: ");
+    	scanf("%d",&ch);
+    	switch(ch)
+    	{
+    		case 1:t=create_bst(t);
+    		       break;
+    		case 2:pre_order(t);
+    		       break;
+    		case 3:post_order(t);
+    		       break;
+    		case 4:in_order(t);
+    		       break;
+    	default:printf("enter correct choice");
+    	}
+    	printf("\n");
+    }
+    while(ch<5);
+}
+struct node *create_bst(struct node *t)
+{
+	struct node *p,*q,*r;
+	int ele,i,n;
+	printf("enter no of nodes");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("enter element:\n");
+		scanf("%d",&ele);
+	p=(struct node*)malloc(sizeof(struct node));
+		p->data=ele;
+		p->left=NULL;
+		p->right=NULL;
+		if(t==NULL)
+		{
+			t=p;
+		}
+		else
+		{
+			q=t;
+			while(q!=NULL&&q->data!=ele)
+			{
+			r=q;
+			if(q->data<ele)
+			q=q->right;
+			else
+			q=q->left;
+			}
+			if(r->data<ele)
+			r->right=p;
+			else if(r->data>ele)
+			r->left=p;
+			else
+		printf("insert element not possible");
+			}
+			}
+				return t;
+}
+void pre_order(struct node *t)
+{
+	if(t!=NULL)
+	{
+		printf("%d\n",t->data);
+		pre_order(t->left);
+		pre_order(t->right);
+	}
+}
+void  post_order(struct node *t)
+{
+	if(t!=NULL)
+	{
+		post_order(t->left);
+		post_order(t->right);
+		printf("%d\n",t->data);
+	}
+}
+ void in_order(struct node *t)
+{
+	if(t!=NULL)
+	{
+		in_order(t->left);
+		printf("%d\n",t->data);
+		in_order(t->right);
+	}
+}
+		
+	
+					
+		
