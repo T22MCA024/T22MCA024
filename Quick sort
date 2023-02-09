@@ -1,0 +1,53 @@
+#include<stdio.h>
+void quicksort(int [],int,int);
+int partion(int [],int,int);
+int main()
+{
+	int a[10],n,i;
+	printf("enter no of elements\n");
+	scanf("%d",&n);
+	printf("enter array elements\n");
+	for(i=0;i<n;i++)
+	{
+		printf("a[%d]=",i);
+		scanf("%d",&a[i]);
+	}
+	quicksort(a,0,n-1);
+	printf("elements are sorted");
+	for(i=0;i<n;i++)
+	{
+		printf("a[%d]=%d\n",i,a[i]);
+	}
+}
+void quicksort(int a[],int lb,int ub)
+{ 
+	int pos	;
+	if(lb<ub)
+	{
+		pos=partion(a,lb,ub);
+		quicksort(a,lb,pos-1);
+		quicksort(a,pos+1,ub);
+	}
+}
+int partion(int a[],int lb,int ub)
+{
+	int temp, pivot, l=lb,r=ub;
+	pivot=a[lb];
+	while(l<r)
+	{
+		while(a[l]<=pivot&&l<=ub)
+		     l++;
+		while(a[r]>pivot&&r>=lb)
+		      r--;
+		if(l<r)
+		{
+			temp=a[l];
+			a[l]=a[r];
+			a[r]=temp;
+		}
+	 }
+	      a[lb]=a[r];
+	      a[r]=pivot;
+	      return r;
+}
+	     
