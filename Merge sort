@@ -1,0 +1,53 @@
+#include<stdio.h>
+void merge_sort(int[],int,int);
+void merging(int[],int,int,int,int);
+int main()
+{
+	int a[20],i,n;
+	printf("enter number of nodes\n");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("a[%d]=",i);
+		scanf("%d",&a[i]);
+	}
+	merge_sort(a,0,n-1);
+	printf("sorted elements are:\n");
+	for(i=0;i<n;i++)
+	{
+		printf("a[%d]=%d\n",i,a[i]);
+	}
+}
+void merge_sort(int a[],int lb,int ub)
+{
+	int m;
+	if(lb<ub)
+	{
+		m=(lb+ub)/2;
+		merge_sort(a,lb,m);
+		merge_sort(a,m+1,ub);
+		merging(a,lb,m,m+1,ub);
+	}
+}
+void merging(int a[20],int l1,int u1,int l2,int u2)
+{
+	int t[10],i=l1,j=l2,k=0;
+	while(i<=u1&&j<=u2)
+	{
+		if(a[i]<=a[j])
+			t[k++]=a[i++];
+		else
+			t[k++]=a[j++];
+     }
+		while(i<=u1)
+			t[k++]=a[i++];
+		while(j<=u2)
+			t[k++]=a[j++];
+		for(i=l1,j=0;i<=u2;i++,j++)
+		{
+			a[i]=t[j];
+		}
+	}
+	
+			
+		
