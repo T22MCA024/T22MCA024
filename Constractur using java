@@ -1,0 +1,42 @@
+
+class Student
+{
+int id,age;
+String name;
+Student()
+{
+id=10;
+name="Java";
+age=18;
+}
+Student(int i,String n,int a)
+{
+id=i;
+name=n;
+age=a;
+}
+Student(Student o)
+{
+id=o.id;
+name=o.name;
+age=o.age;
+}
+void display()
+{
+System.out.println("id="+id+"Name="+name+"Age="+age);
+}
+}
+class COloading
+{
+public static void main(String args[])
+{
+Student S1=new Student();
+S1.display();
+Student S2=new Student(121,"Java Programming",21);
+S2.display();
+Student S3=new Student(S1);
+S3.display();
+Student S4=new Student(S2);
+S4.display();
+}
+}
