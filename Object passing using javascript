@@ -1,0 +1,29 @@
+
+class Sample
+{
+int a,b;
+Sample(int i,int j)
+{
+a=i;
+b=j;
+}
+Sample meth(Sample S)
+{
+Sample S3=new Sample(++a,++b);
+return S3;
+}
+void Show()
+{
+System.out.println("a="+a+"\nb="+b);
+}
+}
+class Obj
+{
+public static void main(String args[])
+{
+Sample S=new Sample(2,3);
+Sample S1;
+S1=S.meth(S);
+S1.Show();
+}
+}
