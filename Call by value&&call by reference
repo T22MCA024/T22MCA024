@@ -1,0 +1,31 @@
+class Sample
+
+{
+int a=20,b=30;
+void meth(int a,int b)
+{
+a=a+10;
+b=b+10;
+}
+void meth(Sample S)
+{
+S.a=S.a+10;
+S.b=S.b+10;
+}
+}
+class CL
+{
+public static void main(String args[])
+{
+Sample S=new Sample();
+Sample S1=new Sample();
+System.out.println("-----Call by value-----");
+System.out.println("before change a="+S.a+"\t b="+S.b);
+S.meth(S.a,S.b);
+System.out.println("After change a="+S.a+"\t b="+S.b);
+System.out.println("-----Call by Reference-----");
+System.out.println("before change a="+S1.a+"\t b="+S1.b);
+S1.meth(S1);
+System.out.println("After change a="+S1.a+"\t b="+S1.b);
+}
+}
