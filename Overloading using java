@@ -1,0 +1,26 @@
+class MOloading
+
+{
+void display()
+{
+System.out.println("This is Method Overloading program");
+}
+void display(int a)
+{
+System.out.println("Argument A="+a);
+}
+void display(int a,double b)
+{
+System.out.println("Argument int A="+a+"\nArgument Double b="+b);
+}
+}
+class MOverl
+{
+public static void main(String args[])
+{
+MOloading m=new MOloading();
+m.display();
+m.display(23);
+m.display(28,14.58);
+}
+}
