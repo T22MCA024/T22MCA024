@@ -1,0 +1,46 @@
+class Stack
+{
+int Stck[]=new int[10];
+int top;
+Stack()
+{
+top=-1;
+}
+void Push(int ele)
+{
+if(top==9)
+ System.out.println("Stack is full");
+else
+ Stck[++top]=ele;
+}
+int Pop()
+{
+int j;
+if(top<0)
+{
+ System.out.println("Stack empty");
+ return 0;
+}
+else
+{
+ j=Stck[top];
+ top--;
+return j;
+}
+}
+}
+class Stmain
+{
+ public static void main(String[] args)
+{
+int i;
+Stack St1=new Stack();
+for(i=0;i<10;i++)
+ St1.Push(i);
+for(i=0;i<10;i++)
+{
+System.out.println("Elements in Array");
+System.out.println(St1.Pop());
+}
+}
+}
