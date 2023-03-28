@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<math.h>
+int isprime(int num);
+int isperfect(int num);
+int isarmstrong(int num);
+int main()
+{
+	int prime,perfect,armstrong,num,p,q;
+    printf("enter num\n");
+	scanf("%d",&num);
+    if(isprime(num))
+    {
+      printf("%d num is prime",num);
+    }
+    else
+    {
+      printf("%d num is not prime\n",num);
+    }
+    if(isperfect(num))
+    {
+      printf("\n%d num is perfect\n",num);
+    }
+     else
+     {
+      printf("%d num is not perfect\n",num);	
+    }
+    if(isarmstrong(num))
+    {
+       printf("%d num is armstrong\n",num);
+    }
+    else
+    {
+       printf("%d num is not armstrong\n",num);
+    }
+}
+int isprime(int num)
+{
+	int i,count=0;
+	for(i=1;i<num;i++)
+	{
+	 if(num%i==0)
+	 {
+	    return 0;
+	    }
+   }
+   return 1;
+}
+int isperfect(int num)
+{
+	int i,sum=0;
+	for(i=1;i<num;i++)
+	{
+	   if(num%i==0)
+      {
+    	  sum +=i;
+      }
+    }
+    return (num==sum);
+}
+int isarmstrong(int num)
+{
+	int i,lastdigit,sum,digit;
+	while(num>0)
+	{
+	lastdigit=num%10;
+	sum=sum+pow(lastdigit,digit);
+	num=num/10;
+	}
+	return( num==sum);
+}
+	  
